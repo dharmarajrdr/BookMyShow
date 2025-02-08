@@ -10,6 +10,8 @@ import lombok.Setter;
 public class Cast extends BaseModel{
 
     private String name;
+
     private String characterName;
+
     private String image;
 }
