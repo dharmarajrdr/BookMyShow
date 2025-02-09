@@ -1,6 +1,10 @@
 package com.dharmaraj.bookmyshow.controllers;
 
+import com.dharmaraj.bookmyshow.dtos.LoginRequestDto;
+import com.dharmaraj.bookmyshow.dtos.LoginResponseDto;
 import com.dharmaraj.bookmyshow.dtos.ResponseStatus;
+import com.dharmaraj.bookmyshow.dtos.SignupUserRequestDTO;
+import com.dharmaraj.bookmyshow.dtos.SignupUserResponseDTO;
 import com.dharmaraj.bookmyshow.dtos.UserRequestDto;
 import com.dharmaraj.bookmyshow.dtos.UserResponseDto;
 import com.dharmaraj.bookmyshow.models.User;
@@ -16,20 +20,38 @@ public class UserController {
         this.userService = userService;
     }
 
-    public UserResponseDto addUser(UserRequestDto userRequestDto) {
-
-        UserResponseDto userResponseDto = new UserResponseDto();
+    public SignupUserResponseDTO signupUser(SignupUserRequestDTO requestDTO) {
+        
+        SignupUserResponseDTO signupUserResponseDTO = new SignupUserResponseDTO();
         try {
-            String name = userRequestDto.getName();
-            String email = userRequestDto.getEmail();
-            String phone = userRequestDto.getPhone();
-            User user = this.userService.addUser(name, email, phone);
-            userResponseDto.setUser(user);
-            userResponseDto.setResponseStatus(ResponseStatus.SUCCESS);
+            String name = requestDTO.getName();
+            String email = requestDTO.getEmail();
+            String password = requestDTO.getPassword();
+            String phone = requestDTO.getPhone();
+            User user = this.userService.signupUser(name, email, phone, password);
+            signupUserResponseDTO.setEmail(email);
+            signupUserResponseDTO.setName(name);
+            signupUserResponseDTO.setResponseStatus(ResponseStatus.SUCCESS);
+            signupUserResponseDTO.setUserId(user.getId());
         } catch (Exception e) {
-            userResponseDto.setResponseStatus(ResponseStatus.FAILURE);
-            userResponseDto.setMessage(e.getMessage());
+            signupUserResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
         }
-        return userResponseDto;
+        return signupUserResponseDTO;
+    }
+
+    public LoginResponseDto login(LoginRequestDto requestDto) {
+        
+        LoginResponseDto loginResponseDto = new LoginResponseDto();
+        try {
+            String email = requestDto.getEmail();
+            String password = requestDto.getPassword();
+            boolean loggedIn = this.userService.login(email, password);
+            loginResponseDto.setLoggedIn(loggedIn);
+            loginResponseDto.setResponseStatus(ResponseStatus.SUCCESS);
+        } catch (Exception e) {
+            loginResponseDto.setLoggedIn(false);
+            loginResponseDto.setResponseStatus(ResponseStatus.FAILURE);
+        }
+        return loginResponseDto;
     }
 }
