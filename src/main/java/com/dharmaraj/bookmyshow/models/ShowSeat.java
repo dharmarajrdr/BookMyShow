@@ -1,6 +1,8 @@
 package com.dharmaraj.bookmyshow.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +18,12 @@ public class ShowSeat extends BaseModel {
     @ManyToOne
     private Seat seat;
 
+    @Enumerated(EnumType.ORDINAL)
     private SeatStatus seatStatus;
+
+    public boolean isAvailable() {
+        return this.seatStatus.equals(SeatStatus.AVAILABLE);
+    }
 }
 
 /**
