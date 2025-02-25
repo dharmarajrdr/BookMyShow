@@ -5,8 +5,6 @@ import com.dharmaraj.bookmyshow.dtos.LoginResponseDto;
 import com.dharmaraj.bookmyshow.dtos.ResponseStatus;
 import com.dharmaraj.bookmyshow.dtos.SignupUserRequestDTO;
 import com.dharmaraj.bookmyshow.dtos.SignupUserResponseDTO;
-import com.dharmaraj.bookmyshow.dtos.UserRequestDto;
-import com.dharmaraj.bookmyshow.dtos.UserResponseDto;
 import com.dharmaraj.bookmyshow.models.User;
 import com.dharmaraj.bookmyshow.services.UserService;
 import org.springframework.stereotype.Controller;
