@@ -28,9 +28,9 @@ public class TicketController {
             int userId = requestDTO.getUserId();
             Ticket ticket = this.ticketService.bookTicket(showSeatIds, userId);
             bookTicketResponseDTO.setTicket(ticket);
-            bookTicketResponseDTO.setStatus(ResponseStatus.SUCCESS);
+            bookTicketResponseDTO.setResponseStatus(ResponseStatus.SUCCESS);
         } catch (Exception e) {
-            bookTicketResponseDTO.setStatus(ResponseStatus.FAILURE);
+            bookTicketResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
         }
         return bookTicketResponseDTO;
     }

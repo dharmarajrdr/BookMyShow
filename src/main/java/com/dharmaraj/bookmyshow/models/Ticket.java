@@ -1,12 +1,12 @@
 package com.dharmaraj.bookmyshow.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -21,13 +21,18 @@ public class Ticket extends BaseModel {
     @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Show show;
+
     private double amount;
 
-    @ManyToMany
-    private List<ShowSeat> showSeats;
+    @OneToMany  // Didn't used mappedBy. Because, Seat class doesn't persist Seat. So, we can't map seat
+    private List<Seat> seats;
 
     @OneToMany
     private List<Payment> payments;
+
+    private Date timeOfBooking;
 }
 
 /**

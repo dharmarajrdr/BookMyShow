@@ -53,7 +53,7 @@ public class TicketServiceImpl implements TicketService {
         List<Seat> seats = new ArrayList<>();
         for(Integer showSeatId: showSeatIds) {
             ShowSeat showSeat = this.showSeatRepository.findById(showSeatId).orElseThrow(() -> new InvalidShowSeatIdException(showSeatId));
-            showSeat.setStatus(SeatStatus.BLOCKED);
+            showSeat.setSeatStatus(SeatStatus.BLOCKED);
             this.showSeatRepository.save(showSeat);
             seats.add(showSeat.getSeat());
         }
@@ -64,7 +64,7 @@ public class TicketServiceImpl implements TicketService {
     @Transactional
     public Ticket bookTicket(List<Integer> showSeatIds, int userId) throws Exception {
 
-        User user = this.userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        User user = this.userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User with id " + userId + " does not exist."));
 
         List<ShowSeat> unavailableSeats = getUnavailableSeats(showSeatIds);
         if(!unavailableSeats.isEmpty()) {
@@ -84,7 +84,7 @@ public class TicketServiceImpl implements TicketService {
         ticket.setTimeOfBooking(new Date());
         ticket.setUser(user);
         ticket.setSeats(seats);
-        ticket.setStatus(TicketStatus.UNPAID);
+        ticket.setTicketStatus(TicketStatus.UNPAID);
         this.ticketRepository.save(ticket);
         return ticket;
     }

@@ -6,9 +6,8 @@ import lombok.Data;
 
 
 @Data
-public class BookTicketResponseDTO {
+public class BookTicketResponseDTO extends BaseResponse {
     
     private Ticket ticket;
 
-    private ResponseStatus status;
 }

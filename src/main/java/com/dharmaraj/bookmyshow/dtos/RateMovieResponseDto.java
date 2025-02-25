@@ -5,8 +5,7 @@ import com.dharmaraj.bookmyshow.models.Rating;
 import lombok.Data;
 
 @Data
-public class RateMovieResponseDto {
+public class RateMovieResponseDto extends BaseResponse {
     
-    private ResponseStatus responseStatus;
     private Rating rating;
 }
