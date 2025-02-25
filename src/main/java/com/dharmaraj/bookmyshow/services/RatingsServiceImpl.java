@@ -3,7 +3,6 @@ package com.dharmaraj.bookmyshow.services;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dharmaraj.bookmyshow.custom_exceptions.MovieNotFoundException;
@@ -22,7 +21,6 @@ public class RatingsServiceImpl implements RatingsService {
     private UserRepository userRepository;
     private MovieRepository movieRepository;
 
-    @Autowired
     public RatingsServiceImpl(RatingRepository ratingRepository, UserRepository userRepository,
             MovieRepository movieRepository) {
         this.ratingRepository = ratingRepository;
