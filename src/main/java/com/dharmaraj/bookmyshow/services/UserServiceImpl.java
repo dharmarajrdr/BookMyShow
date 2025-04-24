@@ -7,7 +7,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.dharmaraj.bookmyshow.models.User;
 import com.dharmaraj.bookmyshow.repositories.UserRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;

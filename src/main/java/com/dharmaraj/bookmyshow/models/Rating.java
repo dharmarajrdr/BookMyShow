@@ -8,7 +8,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Rating {
+public class Rating extends BaseModel {
     
     @ManyToOne
     private User user;
