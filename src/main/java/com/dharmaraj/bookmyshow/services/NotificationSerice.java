@@ -4,5 +4,5 @@ import com.dharmaraj.bookmyshow.dtos.NotificationDto;
 
 public interface NotificationSerice {
 
-    public void Notify(NotificationDto notificationDto);
+    public void notify(NotificationDto notificationDto);
 }

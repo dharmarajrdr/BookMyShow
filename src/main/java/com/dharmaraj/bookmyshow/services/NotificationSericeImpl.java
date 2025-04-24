@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class NotificationSericeImpl implements NotificationSerice {
 
     @Override
-    public void Notify(NotificationDto notificationDto) {
+    public void notify(NotificationDto notificationDto) {
 
         User user = notificationDto.getUser();
         String message = notificationDto.getMessage();

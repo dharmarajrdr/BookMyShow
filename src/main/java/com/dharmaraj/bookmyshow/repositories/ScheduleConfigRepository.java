@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface ScheduleConfigRepository extends JpaRepository<ScheduleConfig, Integer> {
 
-    public Optional<ScheduleConfig> findByName(String name);
+    public Optional<ScheduleConfig> findByTaskName(String taskName);
 }

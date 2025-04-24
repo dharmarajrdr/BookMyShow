@@ -29,7 +29,7 @@ public class SchedulerServiceImpl implements SchedulerService {
         String taskName = updateSchedulerRequestDto.getTaskName();
         String cronExpression = updateSchedulerRequestDto.getCronExpression();
 
-        ScheduleConfig scheduleConfig = scheduleConfigRepository.findByName(taskName).orElseThrow(() -> new ScheduleNotFoundException(taskName));
+        ScheduleConfig scheduleConfig = scheduleConfigRepository.findByTaskName(taskName).orElseThrow(() -> new ScheduleNotFoundException(taskName));
         scheduleConfig.setCronExpression(cronExpression);
         scheduleConfigRepository.save(scheduleConfig);
     }
