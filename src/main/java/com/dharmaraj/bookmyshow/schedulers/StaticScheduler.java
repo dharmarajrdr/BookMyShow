@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class StaticScheduler {
 
-    @Scheduled(fixedDelay = 5000)
+    // @Scheduled(fixedDelay = 5000)
     public void recursiveAction() {
 
-        System.out.println("Hello");
+        System.out.println("Message from static scheduler...");
     }
 }
